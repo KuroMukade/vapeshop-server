@@ -1,0 +1,105 @@
+.header {
+    li {
+        list-style-type: none;
+        a {
+            color: white;
+        }
+    }
+
+    z-index: 20;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-logo {
+        display: flex;
+        align-items: center;
+    }
+
+    a {
+        text-decoration: none;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    &-container {
+        max-width: 1600px;
+        min-width: 1600px;
+        margin: 0 auto;
+    }
+   
+    &-top-navigation__cart-circle {
+        border-radius: 20px;
+        background-color: #FF8A16;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        color: white;
+        font-size: 16px;
+        font-weight: 400;
+    }
+
+    &-top-navigation__cart-wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 105px;
+    }
+
+    &-wrapper {
+        padding: 16px 0;
+
+        &-top {
+            display: flex;
+            justify-content: space-between;
+
+            a {
+                color: #232323;
+                font-size: 16px;
+            }
+
+            &-navigation {
+                display: flex;
+                width: 562px;
+                justify-content: space-between;
+                align-items: center;
+
+                &__input {
+                    outline: none;
+                    background-color: #F5F5F5;
+                    color: #777777;
+                    font-weight: 600;
+                    width: 244px;
+                    height: 32px;
+                    font-size: 12px;
+                    border-radius: 4px;
+                    border: none;
+                    background-image: url('../../assets/images/seach-icon.svg');
+                    padding-left: 18px;
+                    background-position: 236px;
+                    background-repeat: no-repeat;
+                }
+
+
+            }
+        }
+
+        &-bottom {
+            display: flex;
+            align-items: center;
+            height: 64px;
+            width: 100%;
+            background-color: #FF8A16;
+        }
+    }
+    
+    &-bottom-navigation {
+        display: flex;
+        font-size: 16px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 0;
+        width: 840px;
+    }
+}
+

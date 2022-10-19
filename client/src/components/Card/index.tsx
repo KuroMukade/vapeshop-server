@@ -1,12 +1,12 @@
 import React from 'react';
 
-import './productCard.scss';
+import './card.scss';
 import noCardImg from '../../assets/images/noCardImage.png';
 
 interface ProductCardProps {
-    image?: 'string',
-    descriptionHeading: 'string',
-    description: 'string'
+    image?: string,
+    descriptionHeading: string,
+    description: string
 }
 
 const Card = ({description, descriptionHeading, image}: ProductCardProps) => {

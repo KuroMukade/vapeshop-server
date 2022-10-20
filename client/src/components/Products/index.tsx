@@ -1,21 +1,27 @@
-import axios from 'axios';
 import React from 'react'
 
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { fetchProducts } from '../../store/reducers/ActionCreators';
 import Card from '../Card';
 import Skeleton from '../Card/Skeleton';
 
-const Products = () => {    
+import './products.scss';
 
+const Products = () => {    
     const { devices, isLoading } = useAppSelector(state => state.deviceReducer);
     const dispatch = useAppDispatch();
 
     console.log(devices);
 
     useEffect(() => {
- 
+        dispatch(fetchProducts());
     }, []);
+
+    const skeletons = [...new Array(4)].map((index) => <Skeleton key={index}/>);
+    console.log(skeletons[0])
+
+    const productDevices = devices?.map((device) => <Card descriptionHeading={device.name} description={'описание ебейшее'} image={device.img} />);
 
     return (
         <div className='products'>
@@ -25,20 +31,7 @@ const Products = () => {
                     
                 </div>
                 <div className="products-wrapper">
-                    {/* {isLoading 
-                    ? <Skeleton /> 
-                    : devices.map((obj) => 
-                        <Card description='Ремонт и обслуживание вейпов, за демократичную цену. После ремонта в нашем сервисе мы даем гарантию 3 месяца.' descriptionHeading='Пасито пасасито' image={obj.img}/>
-                    )
-                    } */}
-                    {devices?.map(() => {
-                        if (isLoading) {
-                            return <Skeleton />
-                        } else {
-                            // return <Card description={devices}/>
-                        }
-                    })}
-                    
+                    {isLoading ? skeletons : productDevices}                                       
                 </div>
             </div>
         </div>

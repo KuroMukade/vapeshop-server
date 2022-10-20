@@ -11,7 +11,6 @@ interface DeviceRequest {
 export const fetchProducts = () =>  async (dispatch: AppDispatch) => {
     try {
         dispatch(deviceSlice.actions.devicesFetching());
-        console.log(process.env.REACT_APP_API_URL);
         const response = await axios.get<DeviceRequest>(`${process.env.REACT_APP_API_URL}/api/device`);
         dispatch(deviceSlice.actions.devicesFetchingSuccess(response.data.rows));
     } catch (error: any) {

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { AuthRoutes, PublicRoutes } from './routes';
 import { useAppDispatch, useAppSelector } from './hooks/redux';
@@ -9,14 +9,7 @@ import { fetchProducts } from './store/reducers/ActionCreators';
 
 function App() {
   const { isAuth } = useAppSelector(state => state.userReducer);
-  const { devices } = useAppSelector(state => state.deviceReducer);
-  const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(fetchProducts())
-  }, []);
-
-  console.log(isAuth);
   return (
     <div className="App">
       <Header />

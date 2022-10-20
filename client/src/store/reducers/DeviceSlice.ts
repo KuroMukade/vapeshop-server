@@ -11,7 +11,7 @@ interface DeviceState {
 
 const initialState: DeviceState = {
     devices: [],
-    isLoading: false,
+    isLoading: true,
     error: ''
 }
 

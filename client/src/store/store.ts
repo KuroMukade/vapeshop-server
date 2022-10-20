@@ -1,8 +1,10 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import userReducer from './reducers/UserSlice';
+import deviceReducer from './reducers/DeviceSlice';
 
 const rootReducer = combineReducers({
     userReducer,
+    deviceReducer
 });
 
 export const setupStore = () => {
@@ -11,5 +13,5 @@ export const setupStore = () => {
     })
 }
 export type RootState = ReturnType<typeof rootReducer>
-export type UserStore = ReturnType<typeof setupStore>
-export type UserDispatch = UserStore['dispatch'];
+export type AppStore = ReturnType<typeof setupStore>
+export type AppDispatch = AppStore['dispatch'];

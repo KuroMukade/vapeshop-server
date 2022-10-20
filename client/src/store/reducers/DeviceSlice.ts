@@ -4,12 +4,34 @@ import { IDevice } from '../../models/IDevice';
 import { IType } from '../../models/IType';
 
 interface DeviceState {
-    types: IType[],
-    brands: IBrand[],
-    devices: IDevice[],
+    devices?: IDevice[],
+    isLoading: boolean,
+    error: string
 }
 
 const initialState: DeviceState = {
-    // saga moment
-
+    devices: [],
+    isLoading: false,
+    error: ''
 }
+
+export const deviceSlice = createSlice({
+    name: 'device',
+    initialState,
+    reducers: {
+        devicesFetching(state) {
+            state.isLoading = true;
+        },
+        devicesFetchingSuccess(state, action: PayloadAction<IDevice[]>) {
+            state.isLoading = false;
+            state.error = '';
+            state.devices = action.payload;
+        },
+        devicesFetchingError(state, action: PayloadAction<string>) {
+            state.isLoading = false;
+            state.error = action.payload
+        },
+    }
+})
+
+export default deviceSlice.reducer;

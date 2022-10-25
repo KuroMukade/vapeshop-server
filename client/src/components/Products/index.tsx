@@ -12,16 +12,13 @@ const Products = () => {
     const { devices, isLoading } = useAppSelector(state => state.deviceReducer);
     const dispatch = useAppDispatch();
 
-    console.log(devices);
-
     useEffect(() => {
         dispatch(fetchProducts());
     }, []);
 
-    const skeletons = [...new Array(4)].map((index) => <Skeleton key={index}/>);
-    console.log(skeletons[0])
+    const skeletons = [...new Array(4)].map(() => <Skeleton key={Date.now() * Math.random()}/>);
 
-    const productDevices = devices?.map((device) => <Card descriptionHeading={device.name} description={'описание ебейшее'} image={device.img} />);
+    const productDevices = devices.map((device) => <Card key={device.id} id={device.id} descriptionHeading={device.name} description={'Lorem impsum huior dior sit amet AUE [adsjhf[oabf ajhfajfhaba ,abnsd'} image={device.img} />);
 
     return (
         <div className='products'>

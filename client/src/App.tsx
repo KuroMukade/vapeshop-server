@@ -4,6 +4,7 @@ import { AuthRoutes, PublicRoutes } from './routes';
 import { useAppDispatch, useAppSelector } from './hooks/redux';
 
 import Header from './components/Header';
+import Footer from './components/Footer';
 import { userSlice } from './store/reducers/UserSlice';
 import { fetchProducts } from './store/reducers/ActionCreators';
 
@@ -16,6 +17,7 @@ function App() {
       <div className="main container">
         {isAuth ? <AuthRoutes /> : <PublicRoutes />}
       </div>
+      <Footer />
     </div>
   );
 }

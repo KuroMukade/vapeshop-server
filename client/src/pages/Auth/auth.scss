@@ -1,0 +1,130 @@
+.login {
+    padding: 80px 0;
+
+    .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 65px;
+
+            color: #000000;
+        }
+
+        .authorization {
+            margin-right: auto;
+            margin-left: 140px;
+            display: flex;
+            flex-direction: column;
+
+            &-title {
+                display: flex;
+                justify-content: left;
+            }
+
+            &__inputs {
+                min-height: 184px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;                
+            }
+
+            &__input {
+                p {
+                    margin-bottom: 8px;
+                }
+
+                input {
+                    padding-left: 16px;
+
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 22px;
+
+                    color: #777777;
+
+                    outline: none;
+                    border: none;
+
+                    width: 544px;
+                    height: 54px;
+                    
+                    background: #F5F5F5;
+                    border-radius: 8px;
+                }
+            }
+
+            &__button {
+                margin-top: 42px;
+                width: 544px;
+                height: 44px;
+
+                background: #FF8A16;
+                border-radius: 8px;
+
+                outline: none;
+                border: none;
+                cursor: pointer;
+        
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                text-transform: uppercase;
+        
+                color: #FFFFFF;
+
+                &.blocked {
+                    background-color: #ff8a16ad;
+                }
+
+                p {
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 24px;
+
+                    display: flex;
+                    align-items: center;
+                    text-align: center;
+                    text-transform: uppercase;
+
+                    color: #FFFFFF;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1640px) {
+    .login {
+
+        img {
+            width: 700px;
+            margin-left: 100px;
+        }
+
+        .wrapper {
+
+            max-width: 1440px;
+            margin: 0 auto;
+        
+            .authorization {
+                input {
+                    width: 500px;
+                    height: 46px;
+                }
+
+                button {
+                    width: 500px;
+                    height: 40px;
+                }
+            }
+        }
+    }
+}

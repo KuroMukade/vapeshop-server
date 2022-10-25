@@ -19,8 +19,7 @@ const Slider = () => {
         spaceBetween={0}
         slidesPerView={1}
         pagination={{ clickable: true }}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}>
+        >
         <SwiperSlide className={styles.slide}>
           <div data-swiper-parallax={"73%"} className={styles.content} style={{backgroundImage: `url('./hqds.jpg')`}}>
             <h1 data-swiper-parallax={-400}>Одноразовые</h1>

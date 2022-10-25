@@ -1,0 +1,56 @@
+.footer {
+    background-color: #232323;
+    color: white;
+    min-height: 290px;
+
+    h4 {
+        margin: 0;
+        text-align: start;
+    }
+
+    p {
+        margin: 0;
+    }
+
+    &-content {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding-top: 64px;
+        padding-bottom: 82px;
+
+        width: 1665px;
+        margin: 0 auto 0 auto;
+    }    
+    
+    &__left {
+        width: 640px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    &-info {
+        display: flex;
+        justify-content: space-between;
+        width: 360px;
+    }
+
+    &-schedule p, 
+    &-contact p {
+        margin-top: 12px;
+    }
+
+    &__right {
+        max-width: 404px;
+
+        font-style: normal;
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+
+
+}
+

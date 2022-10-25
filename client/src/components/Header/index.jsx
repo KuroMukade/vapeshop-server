@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+
+import { Link } from 'react-router-dom';
 
 import logo from '../../assets/images/logo.svg';
 import './header.scss';
@@ -9,7 +11,7 @@ const index = () => {
         <div className="header-container header-wrapper">
           <div className="header-wrapper-top">
             <div className="header-logo">
-              <a href="?????"><img src={logo} alt="VAPESHOP logo"/></a>
+              <Link href="?????"><img src={logo} alt="VAPESHOP logo"/></Link>
             </div>
             <div className="header-wrapper-top-navigation">
               <input className="header-wrapper-top-navigation__input" placeholder='Поиск по сайту' type="text" />

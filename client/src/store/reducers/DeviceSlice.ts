@@ -4,7 +4,7 @@ import { IDevice } from '../../models/IDevice';
 import { IType } from '../../models/IType';
 
 interface DeviceState {
-    devices?: IDevice[],
+    devices: IDevice[],
     isLoading: boolean,
     error: string
 }

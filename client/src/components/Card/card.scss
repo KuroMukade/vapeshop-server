@@ -1,4 +1,5 @@
 .card {
+    cursor: pointer;
     margin-top: 32px;
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.1));
     width: 404px;
@@ -8,12 +9,21 @@
         display: flex;
         flex-direction: column;
         border-radius: 8px;
+        padding-bottom: 32px;
     }
 
     &__image {
         width: 404px;
         height: 350px;
         object-fit: cover;
+    }
+
+    &-bottom {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 372px;
+        margin: 0 auto;
     }
 
     &__description-title {
@@ -40,6 +50,8 @@
 
     &__button {
         margin-top: 16px;
+        max-width: 372px;
+        min-height: 44px;
 
         display: flex;
         flex-direction: row;
@@ -52,6 +64,13 @@
 
         background: #FF8A16;
         border-radius: 8px;
+        border: none;
+        cursor: pointer;
+
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+        text-transform: uppercase;
 
         color: white;
         font-weight: 700;

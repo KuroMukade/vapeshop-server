@@ -1,71 +1,41 @@
-import React, { useEffect } from 'react';
-import classNames from 'classnames';
+import React from 'react';
 
-import { useState } from 'react';
+import useInput from '../../hooks/useValidate';
+import { authValidations } from '../../constants/Validations/validations';
 import { login } from '../../http/userAPI';
+
+import classNames from 'classnames';
 
 import mainImg from '../../assets/images/authImg.jpg';
 import './auth.scss';
+import useValidate from '../../hooks/useValidate';
+
+const formFields = {
+  email: '',
+  password: '',
+};
+
+interface IUserLogin {
+  email: string,
+  password: string
+}
 
 const Auth = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [emailDirty, setEmailDirty] = useState<boolean>(false);
-  const [passwordDirty, setpasswordDirty] = useState<boolean>(false);
-  const [emailError, setEmailError] = useState<string>('Емаил не может быть путым');
-  const [passwordError, setPasswordError] = useState<string>('Пароль не может быть пустым');
-  const [formValid, setFormValid] = useState<boolean>(false);
+  const { handleChange, handleBlur, errors, fields, handleSubmit, handleFocus } = useValidate({
+    formFields,
+    validations: { email: authValidations.email, password: authValidations.password },
+    onSubmit: signInHandler
+  });
 
-  useEffect(() => {
-    if (emailError || passwordError) {
-      setFormValid(false);
-    } else {
-      setFormValid(true);
-    }
-  }, [emailError, passwordError])
-
-  const emailHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-    const re =
-      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-
-    if (!re.test(String(e.target.value).toLowerCase())) {
-      setEmailError('Некорректный емаил');
-    } else {
-      setEmailError('');
-    }
-  };
-
-  const passwordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-    if (e.target.value.length < 5 || e.target.value.length > 12) {
-      setPasswordError('Пароль должен содержать не менее 5 и не более 12 символов');
-      if (!e.target.value) {
-        setPasswordError('Пароль не должен быть пустым');
-      }
-    } else {
-      setPasswordError('');
-    }
+  function signInHandler(data: IUserLogin) {
+    signIn(data);
   }
 
-  const blurHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.name);
-    switch (e.target.name) {
-      case 'email':
-        setEmailDirty(true);
-        break;
-      case 'password':
-        setpasswordDirty(true);
-        break;
-    }
+  const signIn = async (data: IUserLogin) => {
+    console.log(data)
+    const response = await login(data.email, data.password);
+    console.log(response)
   };
-
-  // const signIn = async () => {
-  //   if (email && password) {
-  //     const response = await login(email, password);
-  //     console.log(response)
-  //   }
-  // }
 
   return (
     <main className="login">
@@ -78,14 +48,15 @@ const Auth = () => {
           <div className="authorization__inputs">
             <div className="authorization__input">
               <p>Электронная почта</p>
-              {emailDirty && emailError && (
-                <div style={{ color: 'red', marginBottom: '6px' }}>{emailError}</div>
-              )}
+              <div style={{color: 'red', paddingBottom: '12px'}}>
+                {errors.email}
+              </div>
               <input
-                onBlur={(e) => blurHandler(e)}
-                value={email}
-                onChange={(e) => emailHandler(e)}
-                name={'email'}
+                value={fields.email}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                onFocus={handleFocus}
+                name='email'
                 className="email"
                 placeholder="example@domain.com"
                 type="email"
@@ -93,14 +64,15 @@ const Auth = () => {
             </div>
             <div className="authorization__input">
               <p>Пароль</p>
-              {passwordDirty && passwordError && (
-                <div style={{ color: 'red', marginTop: '6px' }}>{passwordError}</div>
-              )}
+              <div style={{color: 'red', paddingBottom: '12px'}}>
+                {errors.password && errors.password}
+              </div>
               <input
-                onBlur={(e) => blurHandler(e)}
-                value={password}
-                onChange={(e) => passwordHandler(e)}
-                name={'password'}
+                value={fields.password}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                onFocus={handleFocus}
+                name='password'
                 className="password"
                 placeholder="*******"
                 type="password"
@@ -108,13 +80,11 @@ const Auth = () => {
             </div>
           </div>
           <button
-            className={classNames(
-              'authorization__button',
-              !formValid ? 'blocked' : '',
+            className={classNames('authorization__button',
+             {'blocked': errors.email || errors.password}
             )}
-            disabled={!formValid}
-            onClick={() => console.log('успех')}
-            >
+            onClick={handleSubmit}
+            disabled={errors.email || errors.password ? true : false}>
             <p>АВТОРИЗАЦИЯ</p>
           </button>
         </div>

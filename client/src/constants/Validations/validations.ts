@@ -23,5 +23,13 @@ export const authValidations = {
         pattern: {
             ...authorizationValidationPatters.passwordPattern
         }
+    },
+    passwordRepeat: {
+        required: {
+            ...requiredTemplate
+        },
+        pattern: {
+            ...authorizationValidationPatters.repeatPattern
+        }
     }
 }

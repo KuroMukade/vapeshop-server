@@ -1,0 +1,29 @@
+.brandbar {
+    .brands {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 3px;
+        font-size: 16px;
+    }
+    .wrapper {
+        border: 1px solid #e6e4e4;
+    }
+
+    .brand {
+        cursor: pointer;
+        list-style-type: none;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 12px 24px;
+        &:hover {
+            background-color: rgb(250, 248, 248);
+            transition: .25s ease;
+        }
+        &.selected {
+            background-color: black;
+            color: white;
+            border-radius: 3px;
+        }
+    }
+}

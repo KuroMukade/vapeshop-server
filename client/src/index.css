@@ -12,6 +12,19 @@ code {
     monospace;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(255, 255, 255);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #616161;
+  border-radius: 10px;
+}
+
 .container {
   margin: 0 auto;
   max-width: 1664px;

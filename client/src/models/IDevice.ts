@@ -3,5 +3,5 @@ export interface IDevice {
     name: string,
     price: number,
     rating: number,
-    img?: string
+    img?: string,   
 }

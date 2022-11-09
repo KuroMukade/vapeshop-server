@@ -12,7 +12,7 @@ type IValidations<T> = Record<keyof T, Partial<IValidation>>
 
 
 interface IValidationPattern {
-    value: string | ((value: any) => boolean),
+    value: string | ((value: any, repeat?: any) => boolean),
     message: string,
 }
 
@@ -40,9 +40,9 @@ const useValidate = <T extends Record<keyof T, any> = {}>({formFields, validatio
         return validationKey?.required?.value ? value.toString().length > 0 : true;
     }
 
-    const patternValidate = (validationKey: IValidations<T>[keyof T], pattern: IValidationPattern, value: string) => {
+    const patternValidate = (validationKey: IValidations<T>[keyof T], pattern: IValidationPattern, value: string, repeat?: string) => {
         if (pattern.value instanceof Function) {
-            return pattern.value(value);
+            return pattern.value(value, repeat);
         } else {
             const regExpPattern = new RegExp(pattern.value);
             return validationKey?.pattern ? regExpPattern.test(value) : true 
@@ -76,7 +76,7 @@ const useValidate = <T extends Record<keyof T, any> = {}>({formFields, validatio
         }
     }
 
-    const handleValidate = (key: keyof T, value: string) => {
+    const handleValidate = (key: keyof T, value: string, repeat?: string) => {
         const validationKey = validations[key];
         const validateErrors: IErrors<T> = {...errors};
         if (!requiredValid(validationKey, value)) {
@@ -91,7 +91,7 @@ const useValidate = <T extends Record<keyof T, any> = {}>({formFields, validatio
             return validateErrors;
         }
 
-        const patternValid = patternValidate(validationKey, validationKey.pattern, value);
+        const patternValid = patternValidate(validationKey, validationKey.pattern, value, repeat);
         if (!patternValid) {
             return {
                 ...validateErrors,

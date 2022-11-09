@@ -1,9 +1,31 @@
-import React from 'react'
+import React, { useState } from 'react';
+
+import CreateType from '../components/modals/CreateType';
+import CreateBrand from '../components/modals/CreateBrand';
+import CreateDevice from '../components/modals/CreateDevice';
+
+import { Container, Button } from 'react-bootstrap';
 
 const Admin = () => {
+  const [brandVisisble, setBrandVisible] = useState(false);
+  const [deviceVisible, setDeviceVisible] = useState(false);
+  const [typeVisible, setTypeVisible] = useState(false);
   return (
-    <div>Admin</div>
-  )
-}
+    <Container className="d-flex flex-column">
+      <Button onClick={() => setTypeVisible(true)} variant={'outline-dark'} className={'mt-4 p-2'}>
+        Добавить тип
+      </Button>
+      <Button onClick={() => setBrandVisible(true)} variant={'outline-dark'} className={'mt-4 p-2'}>
+        Добавить бренд
+      </Button>
+      <Button onClick={() => setDeviceVisible(true)} variant={'outline-dark'} className={'mb-4 mt-4 p-2'}>
+        Добавить устройство
+      </Button>
+      <CreateType show={typeVisible} onHide={() => setTypeVisible(false)} />
+      <CreateBrand show={brandVisisble} onHide={() => setBrandVisible(false)} />
+      <CreateDevice show={deviceVisible} onHide={() => setDeviceVisible(false)} />
+    </Container>
+  );
+};
 
-export default Admin
+export default Admin;

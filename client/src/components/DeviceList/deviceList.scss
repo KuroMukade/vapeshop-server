@@ -1,0 +1,6 @@
+.device-list {
+    display: grid;
+    grid-template-columns: 2fr 2fr 2fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 40px
+}

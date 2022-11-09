@@ -1,0 +1,31 @@
+.typebar {
+    display: flex;
+    flex-direction: column;
+    .typebar-container {
+        border: 1px solid #e6e4e4;
+        box-sizing: border-box;
+        border-radius: 4px;
+        max-width: 15rem;
+    }
+    .nav-option {
+        cursor: pointer;
+        list-style-type: none;
+        letter-spacing: .7px;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 15px 30px;
+        &:not(:nth-last-child) {
+            border: 1px solid #e6e4e4;
+
+        }
+        &:hover {
+            background-color: rgb(250, 248, 248);
+            transition: .25s ease;
+        }
+        &.selected {
+            background-color: #FF8A16;
+            color: white;
+        }
+    }
+
+}

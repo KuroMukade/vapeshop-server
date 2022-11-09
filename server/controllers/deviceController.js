@@ -30,6 +30,32 @@ class DeviceController {
         }
     }
 
+    async edit(req, res, next) {
+        try {
+            const {id} = req.query;
+            let {name, price, brandId, typeId, info} = req.body;
+            const device = await Device.update(
+                {name, price, brandId, typeId}, 
+                {where: {id: id}});
+            if (info) {
+                info = JSON.parse(info);
+                info.forEach((i) => {
+                    DeviceInfo.update({
+                        title: i.title,
+                        description: i.description,
+                        deviceId: device.id,
+                    },
+                    {
+                        where: {id: id}
+                    })
+                })
+            }
+            return res.json(device);
+        } catch (error) {
+            next(ApiError.badRequest(error.message));
+        }
+    }
+
     async getAll(req, res) {
         let {brandId, typeId, page, limit} = req.query;
         page = page || 1;

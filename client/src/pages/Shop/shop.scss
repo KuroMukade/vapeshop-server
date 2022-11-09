@@ -1,0 +1,25 @@
+.shop {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) ;
+    grid-template-rows: 80px;
+    padding: 50px 0;
+
+    .brandbar {
+        grid-row-start: 1;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        height: max-content;
+    }
+
+    .device-list {
+        grid-column-start: 2;
+        grid-column-end: 4;
+        grid-row-start: 2;
+        grid-row-end: 20;
+    }
+
+    .pages {
+        grid-row-start: 20;
+        grid-column-start: 4;
+    }
+}

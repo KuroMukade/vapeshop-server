@@ -1,0 +1,93 @@
+.card {
+    cursor: pointer;
+    margin-top: 32px;
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.1));
+    width: 404px;
+
+    &-wrapper {
+        background-color: #EEEEEE;
+        display: flex;
+        flex-direction: column;
+        border-radius: 8px;
+        padding-bottom: 32px;
+    }
+
+    .card-image__wrapper {
+        display: flex;
+        justify-content: center;
+        width: 402px;
+        height: 319px;
+        background-color: #fff;
+        border-radius: 8px 8px 0 0;
+        border-bottom: none;
+    }
+
+    &__image {
+        border-radius: 8px;
+        width: 242px;
+        height: 319px;
+        object-fit: cover;
+        border-bottom: none;
+    }
+
+    &-bottom {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        width: 372px;
+        margin: 0 auto;
+    }
+
+    &__description-title {
+        margin-top: 32px;
+        padding: 0 16px;
+
+        color: black;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 33px;
+
+    }
+
+    &__description {
+        margin-top: 8px;
+        padding: 0 16px 16px 16px;
+
+        color: black;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    &__button {
+        margin-top: 16px;
+        max-width: 372px;
+        min-height: 44px;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        padding: 10px 138px;
+        gap: 10px; 
+
+        background: #FF8A16;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 24px;
+        text-transform: uppercase;
+
+        color: white;
+        font-weight: 700;
+
+    }
+}
+

@@ -3,8 +3,8 @@ const router = new Router();
 const brandController = require('../controllers/brandController');
 const checkRole = require('../middleware/checkRoleMiddleware');
 
-router.post('/', checkRole(),  brandController.create);
-router.get('/', checkRole(),  brandController.getAll);
-router.delete('/', checkRole(),  brandController.delete);
+router.post('/', brandController.create);
+router.get('/', brandController.getAll);
+router.delete('/', brandController.delete);
 
 module.exports = router;

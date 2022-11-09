@@ -49,6 +49,8 @@
     &-wrapper {
         padding: 16px 0;
 
+
+
         &-top {
             display: flex;
             justify-content: space-between;
@@ -60,7 +62,7 @@
 
             &-navigation {
                 display: flex;
-                width: 562px;
+                min-width: 900px;
                 justify-content: space-between;
                 align-items: center;
 
@@ -69,7 +71,7 @@
                     background-color: #F5F5F5;
                     color: #777777;
                     font-weight: 600;
-                    width: 244px;
+                    width: 260px;
                     height: 32px;
                     font-size: 12px;
                     border-radius: 4px;
@@ -80,7 +82,20 @@
                     background-repeat: no-repeat;
                 }
 
+                button {
+                    padding: 10px 20px;
+                    outline: none;
+                    border: 2px solid #FF8A16;
+                    border-radius: 3px;
+                    background-color: inherit;
+                    cursor: pointer;
+                    font-weight: bold;
 
+                    &:hover {
+                        background-color: #FF8A16;
+                        color: white;
+                    }
+                }
             }
         }
 
@@ -92,6 +107,11 @@
             background-color: #FF8A16;
         }
     }
+
+    ul {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
     
     &-bottom-navigation {
         display: flex;
@@ -100,6 +120,9 @@
         justify-content: space-between;
         padding: 16px 0;
         width: 840px;
+
+
     }
+
 }
 

@@ -8,18 +8,32 @@ class BrandController {
     return res.json(brand);
   }
 
+  async edit(req, res, next) {
+    try {
+      const { id } = req.query;
+      const { name } = req.body;
+      if (!id) {
+        return next(ApiError.badRequest(`Не задан id`));
+      }
+      const brand = await Brand.update({name}, {where: {id: id}});
+      return res.json(brand);
+    } catch (error) {
+      return next(ApiError.badRequest(error.message));
+    }
+  }
+
   async getAll(req, res) {
     const brands = await Brand.findAll();
     return res.json(brands);
   }
 
-  async delete(req, res) {
-    const { name } = req.query;
-    if (!name) {
-      next(ApiError.badRequest('Не задан ID'));
+  async delete(req, res, next) {
+    const { id } = req.query;
+    if (!id) {
+      return next(ApiError.badRequest('Не задан id'));
     }
-    await Brand.destroy({ where: { name: name } });
-    res.json(`Type with name:${name} successfuly removed`);
+    await Brand.destroy({ where: { id: id } });
+    return res.json(`Brand with name:${id} successfuly removed`);
   }
 }
 

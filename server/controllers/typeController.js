@@ -13,13 +13,28 @@ class TypeController {
     return res.json(types);
   }
 
+  async edit(req, res, next) {
+    try {
+      const { id } = req.query;
+      const { name } = req.body;
+      if (!id) {
+        return next(ApiError.badRequest(`Не задан id`));
+      }
+      const type = await Type.update({name}, {where: {id: id}});
+      return res.json(type);
+    } catch (e) {
+      return next(ApiError.badRequest(error.message));
+    }
+
+  }
+
   async delete(req, res, next) {
     const { id } = req.query;
     if (!id) {
       return next(ApiError.badRequest('Не задан ID'));
     }
     await Type.destroy({ where: { id: id } });
-    res.json(`Type with id:${id} successfuly removed`);
+    res.json(`Type with id:${id} successfuly deleted`);
   }
 }
 

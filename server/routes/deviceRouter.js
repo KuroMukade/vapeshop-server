@@ -4,6 +4,7 @@ const deviceController = require('../controllers/deviceController');
 
 router.post('/', deviceController.create);
 router.put('/', deviceController.edit);
+router.delete('/', deviceController.delete);
 router.get('/', deviceController.getAll);
 router.get('/:id', deviceController.getOne);
 

@@ -23,7 +23,6 @@ class UserController {
         }
         const hashPassword = await bcrypt.hash(password, 5);
         const user = await User.create({email, role, password: hashPassword});
-        const basket = Basket.create({userId: user.id});
         const token = generateJwt(user.id, user.email, user.role); 
 
         return res.json({token});
@@ -46,6 +45,32 @@ class UserController {
     async check(req, res, next) {
         const token = generateJwt(req.user.id, req.user.email, req.user.role);
         return res.json({token});
+    }
+
+    async deleteUser(req, res, next) {
+        try {
+            const { id } = req.query;
+            User.destroy({where: {id: id}});
+            return res.json(`Пользователь с id ${id} успешно удален`);
+        } catch (error) {
+            return next(ApiError.badRequest(error.message));
+        }
+    }
+
+    async getAllUsers(req, res, next) {
+        const users = await User.findAll();
+        return res.json(users);
+    }
+
+    async editUserRole(req, res, next) {
+        try {
+            const { id } = req.query;
+            const { role } = req.body;
+            const user = User.update({role: role}, {where: {id: id}});
+            return res.json(user);
+        } catch (error) {
+            return next(ApiError.badRequest(`Пользователь с id: ${id} не найден`));
+        }
     }
 }
 
